@@ -1,0 +1,8 @@
+{
+    "name": "fourtyin-engine-v3",
+    "version-string": "1.0.0",
+    "dependencies": [
+      "qtbase"
+    ]
+}
+  
