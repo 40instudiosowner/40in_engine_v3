@@ -40,7 +40,7 @@ To build the 40in_engine_v3 project, follow these steps:
 	```bat
 		cmake --build --preset x64-your_vs_config
 	```
-6. If you don't have Visual Studio, you can use other build systems like Ninja or MinGW.
+6. If you don't have Visual Studio, you can either install IDE or VS build tools to get MSVC compiler. Use other build systems like Ninja or MinGW.
    Just make sure to specify the correct generator in the CMake command.
 Ninja example:
 1. Install [Ninja](https://ninja-build.org/).
