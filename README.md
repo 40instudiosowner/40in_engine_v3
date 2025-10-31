@@ -17,6 +17,7 @@ To build the 40in_engine_v3 project, follow these steps:
 ```bat
 	git clone https://github.com/40instudiosowner/40in_engine_v3.git
 ```
+Change VCPKG_ROOT CMakeLists variable to point to your vcpkg folder (C:\vcpkg in this example).
 
 4. If you are using Visual Studio 2022 and later versions, just open the project folder, CMake will see vcpkg.json.
    Then CMake will download and build all the dependencies automatically. (Equivalent to 'vcpkg install' command).

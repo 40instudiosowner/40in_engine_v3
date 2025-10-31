@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
 	QApplication app(argc, argv);
 
 	QMainWindow main_window;
-	main_window.setWindowTitle("40in Engine V3");
+	main_window.setWindowTitle("40in Engine v3");
 	main_window.resize(800, 600);
 	main_window.show();
 
