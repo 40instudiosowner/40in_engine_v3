@@ -26,6 +26,35 @@ target_link_libraries(40in_engine_v3 PRIVATE
     Qt6::Widgets
 )
 
+if(NOT DEFINED VCPKG_ROOT)
+    set(VCPKG_ROOT "C:/vcpkg") # или твой путь
+endif()
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(QT_BIN_DIR "${VCPKG_ROOT}/installed/${VCPKG_TARGET_TRIPLET}/debug/bin")
+    set(QT_PLUGINS_DIR "${VCPKG_ROOT}/installed/${VCPKG_TARGET_TRIPLET}/debug/Qt6/plugins")
+else()
+    set(QT_BIN_DIR "${VCPKG_ROOT}/installed/${VCPKG_TARGET_TRIPLET}/bin")
+    set(QT_PLUGINS_DIR "${VCPKG_ROOT}/installed/${VCPKG_TARGET_TRIPLET}/Qt6/plugins")
+endif()
+
+
+# Копируем необходимые Qt DLL в выходную директорию после сборки
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${QT_BIN_DIR}/Qt6Cored.dll"
+        "${QT_BIN_DIR}/Qt6Guid.dll"
+        "${QT_BIN_DIR}/Qt6Widgetsd.dll"
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>
+)
+
+# Копируем папку platforms
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${QT_PLUGINS_DIR}/platforms"
+        "$<TARGET_FILE_DIR:${PROJECT_NAME}>/platforms"
+)
+
 # (необязательно) включаем MOC, RCC, UIC для .ui, .qrc и сигналов/слотов
 set_target_properties(40in_engine_v3 PROPERTIES
     AUTOMOC ON

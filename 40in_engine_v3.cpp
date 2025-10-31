@@ -1,9 +1,19 @@
 ﻿#include "40in_engine_v3.h"
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QApplication>
 
-using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-	cout << "Hello CMake." << endl;
+
+	QApplication app(argc, argv);
+
+	QMainWindow main_window;
+	main_window.setWindowTitle("40in Engine V3");
+	main_window.resize(800, 600);
+	main_window.show();
+
+	app.exec();
+
 	return 0;
 }
